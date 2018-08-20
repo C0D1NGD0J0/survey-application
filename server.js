@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const PORT = (process.env.PORT || 3000);
 
+// DATABASE
+require("./app/Database");
+
 // MIDDLEWARES
 require("./app/Config/passport");
 
