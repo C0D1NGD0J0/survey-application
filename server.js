@@ -8,9 +8,6 @@ const PORT = (process.env.PORT || 3000);
 // DATABASE
 require("./app/Database");
 
-// MODELS
-require('./app/Models/User');
-
 // MIDDLEWARES
 app.use(
 	cookieSession({
@@ -21,6 +18,9 @@ app.use(
 require("./app/Config/passport");
 app.use(passport.initialize());
 app.use(passport.session());
+
+// MODELS
+require('./app/Models/User');
 
 // ROUTES
 app.use(require("./app/Routes/auth"));

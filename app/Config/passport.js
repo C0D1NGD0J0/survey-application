@@ -8,8 +8,8 @@ passport.serializeUser((user, done) =>{
 });
 
 passport.deserializeUser((id, done) =>{
-	User.findById(id).then((user) =>{
-		done(null, user);
+	User.findById(id, function(err, user){
+		done(err, user);
 	});
 });
 
@@ -20,10 +20,11 @@ passport.use(new GoogleStrategy({
 	proxy: true
 }, (accessToken, refreshToken, profile, done) =>{
 	User.findOne({googleId: profile.id}, function(err, user){
+		if(err) return console.log(err);
 		if(user){
 			return done(null, user);
 		} else {
-			const newuser = new User({googleId: profile.id});
+			const newuser = new User({googleId: profile.id, email: profile.emails[0].value});
 			newuser.save((err) =>{
 				if(err) return console.log(err);
 				done(null, user);
