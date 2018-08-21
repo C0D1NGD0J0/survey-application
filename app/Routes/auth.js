@@ -6,8 +6,12 @@ router.get("/auth/google", authCntrl.google);
 
 router.get("/auth/google/callback", authCntrl.googleCB);
 
-router.get("/logout", (req, res, next) =>{
+router.get("/api/logout", (req, res, next) =>{
 	req.logout();
+	res.send(req.user);
+});
+
+router.get("/api/current_user", (req, res, next) =>{
 	res.send(req.user);
 });
 
