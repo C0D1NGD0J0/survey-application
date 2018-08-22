@@ -13,22 +13,21 @@ passport.deserializeUser((id, done) =>{
 	});
 });
 
-passport.use(new GoogleStrategy({
-	clientID: process.env.GOOGLE_CLIENT_ID,
-	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	callbackURL: "/auth/google/callback",
-	proxy: true
-}, (accessToken, refreshToken, profile, done) =>{
-	User.findOne({googleId: profile.id}, function(err, user){
-		if(err) return console.log(err);
-		if(user){
-			return done(null, user);
+passport.use(
+	new GoogleStrategy({
+		clientID: process.env.GOOGLE_CLIENT_ID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		callbackURL: "/auth/google/callback",
+		proxy: true
+	},
+	async (accessToken, refreshToken, profile, done) =>{
+		const existing_user = await User.findOne({googleId: profile.id});
+
+		if(existing_user){
+			done(null, existing_user);
 		} else {
-			const newuser = new User({googleId: profile.id, email: profile.emails[0].value});
-			newuser.save((err) =>{
-				if(err) return console.log(err);
-				done(null, user);
-			});
+			const newuser = await new User({googleId: profile.id, email: profile.emails[0].value}).save();
+			done(null, newuser);	
 		}
-	});
-}));
+	}
+));
