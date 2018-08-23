@@ -19,7 +19,7 @@ class Navbar extends PureComponent {
 			    <div id="navbar" className="collapse navbar-collapse">
 			      <ul className="nav navbar-nav navbar-right">
 							<li><Link to="/">Home <i className="fas fa-home"></i></Link></li>
-					    <li><Link to="/">Login with Google <i className="fab fa-google-plus 2x"></i></Link></li>
+					    <li><Link to="/auth/google">Login with Google <i className="fab fa-google-plus 2x"></i></Link></li>
 				  	</ul>
 			    </div>
 			  </div>

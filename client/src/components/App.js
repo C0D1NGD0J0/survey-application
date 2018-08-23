@@ -1,8 +1,14 @@
 import React, {PureComponent} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./layouts/Navigation/Navbar";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class App extends PureComponent{
+	componentDidMount(){
+		this.props.fetchUser();
+	}
+
 	render(){
 		return(
 			<Router>
@@ -18,4 +24,4 @@ class App extends PureComponent{
 	}
 }
 
-export default App;
+export default connect(null, actions)(App);
