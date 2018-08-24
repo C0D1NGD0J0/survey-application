@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Payment from "../../Payments/Payment";
 
 class Navbar extends Component {
 
@@ -22,7 +23,7 @@ class Navbar extends Component {
 	      <Link to="/dashboard" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{auth.email} <span className="caret"></span></Link>
 	      <ul className="dropdown-menu">
 	        <li><Link to="/surveys/new">Create Survey <i className="fas fa-plus"></i></Link></li>
-	        <li><Link to="#!">Add Credit <i className="fas fa-dollar"></i></Link></li>
+	        <li><Link to="#!"><i className="fas fa-dollar"></i> <Payment/></Link></li>
 	        <li><Link to="/dashboard">Settings <i className="fas fa-cogs"></i></Link></li>
 	        <li role="separator" className="divider"></li>
 	        <li><a href="/api/logout">Logout <i className="fas fa-power-off"></i></a></li>
@@ -32,7 +33,6 @@ class Navbar extends Component {
 	}
 
 	render() {
-
 		return (
 			<nav className="navbar navbar-inverse navbar-fixed-top">
 			  <div className="container">
