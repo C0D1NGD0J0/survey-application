@@ -6,7 +6,9 @@ import { Provider } from "react-redux";
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<div className="container" style={{paddingTop: "50px"}}>
+			<App />
+		</div>
 	</Provider>, 
 	document.getElementById("root")
 );
