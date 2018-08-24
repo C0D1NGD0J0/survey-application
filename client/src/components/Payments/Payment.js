@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import StripeCheckout from "react-stripe-checkout";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class Payment extends Component {
 	render() {
@@ -10,7 +12,7 @@ class Payment extends Component {
 				name="SnapSurvey"
 				description="$5 for 5 email credits..."
 				amount={500}
-				token={token => console.log(token)}
+				token={token => this.props.handleStripeToken(token)}
 				stripeKey={process.env.REACT_APP_STRIPE_KEY}
 			>
 				<span style={mystlye}> {this.props.text} {this.props.fontAwesome}</span>
@@ -24,4 +26,4 @@ Payment.defaultProps = {
 	fontAwesome: null
 }
 
-export default Payment;
+export default connect(null, actions)(Payment);
