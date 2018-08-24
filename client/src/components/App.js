@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./layouts/Navigation/Navbar";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home";
 import { connect } from "react-redux";
 import * as actions from "../actions";
