@@ -1,5 +1,6 @@
 import React from 'react';
 import "./dashboard.css";
+import Payment from "../Payments/Payment";
 
 const Dashboard = (props) => {
   return (
@@ -9,12 +10,11 @@ const Dashboard = (props) => {
  			</div>
  			<div className="card-list">
 				<div className="col-md-4 mb-2">
-					<a href="#!">
-						<div className="card-list-item">
-							<i className="fas fa-dollar-sign fa-3x"></i>
-							<h2 className="text-center text-uppercase">Add Credit</h2>
-						</div>
-					</a>
+					<div className="card-list-item" style={{color: "#ffffff"}}>
+						<i className="fas fa-dollar-sign fa-3x"></i>
+						<h2 className="text-center text-uppercase">Add Credit</h2>
+						<Payment text={"click here"} fontAwesome={""} />
+					</div>
 				</div>
 
 				<div className="col-md-4 mb-2">
