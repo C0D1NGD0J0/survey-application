@@ -5,7 +5,7 @@ const authCntrl = require('../Controllers/auth');
 router.get("/auth/google", authCntrl.google);
 
 router.get("/auth/google/callback", authCntrl.googleCB, (req, res) =>{
-	res.redirect("/surveys");
+	res.redirect("/dashboard");
 });
 
 router.get("/api/logout", (req, res, next) =>{

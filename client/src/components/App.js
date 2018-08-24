@@ -17,9 +17,7 @@ class App extends PureComponent{
 				<div>
 					<Navbar />
 					<Route exact path="/" component={Home} />
-					<Route exact path="/surveys" component={Dashboard} />
-					{/*<Route path="/surveys/new" component={SurveyNewPage} />
-					<Route path="/dashboard" component={Dashboard} />*/}
+					<Route exact path="/dashboard" component={Dashboard} />
 				</div>
 			</Router>
 		);
