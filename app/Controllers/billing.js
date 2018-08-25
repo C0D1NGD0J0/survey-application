@@ -9,7 +9,9 @@ const billingCntrl = {
 			source: req.body.id
 		});
 
-		console.log(_charge);
+		req.user.credits += 5;
+		const user = await req.user.save();
+		res.send(user);
 	}
 };
 

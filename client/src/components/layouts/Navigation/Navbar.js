@@ -19,16 +19,19 @@ class Navbar extends Component {
 		const { auth } = this.props;
 
 		return(
-			<li className="dropdown">
-	      <Link to="/dashboard" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{auth.email} <span className="caret"></span></Link>
-	      <ul className="dropdown-menu">
-	        <li><Link to="/surveys/new">Create Survey <i className="fas fa-plus"></i></Link></li>
-	        <li><Link to="#!"><Payment text={"Add Credit"} fontAwesome={<i className="fas fa-dollar-sign"></i>}/></Link></li>
-	        <li><Link to="/dashboard">Settings <i className="fas fa-cogs"></i></Link></li>
-	        <li role="separator" className="divider"></li>
-	        <li><a href="/api/logout">Logout <i className="fas fa-power-off"></i></a></li>
-	      </ul>
-	    </li>
+			<React.Fragment>
+				<li><a href="#!">Credits <span className="badge">{auth.credits}</span></a></li>
+				<li className="dropdown">
+		      <Link to="/dashboard" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{auth.email} <span className="caret"></span></Link>
+		      <ul className="dropdown-menu">
+		        <li><Link to="/surveys/new">Create Survey <i className="fas fa-plus"></i></Link></li>
+		        <li><Link to="#!"><Payment text={"Add Credit"} fontAwesome={<i className="fas fa-dollar-sign"></i>}/></Link></li>
+		        <li><Link to="/dashboard">Settings <i className="fas fa-cogs"></i></Link></li>
+		        <li role="separator" className="divider"></li>
+		        <li><a href="/api/logout">Logout <i className="fas fa-power-off"></i></a></li>
+		      </ul>
+		    </li>
+		  </React.Fragment>
 		);
 	}
 

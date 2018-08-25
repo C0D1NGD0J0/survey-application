@@ -9,7 +9,8 @@ const UserSchema = new Schema({
 		required: true
 	},
 	email: String,
-	avatar: String
+	avatar: String,
+	credits: {type: Number, default: 0}
 });
 
 module.exports = mongoose.model("User", UserSchema);
