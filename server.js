@@ -32,10 +32,11 @@ app.use(require("./app/Routes/billing"));
 if(isProductionEnv){
 	//express will server up production assets files
 	app.use(express.static("./client/build"));
+
 	//express will serve up index.html file if it doesn't recognize the route
 	const path = require("path");
 	app.get("*", (req, res) =>{
-		res.sendFile(path.resolve(__dirname, "survey-app", "client", "build", "index.html"));
+		res.sendFile(path.resolve(__dirname, "/client", "build", "index.html"));
 	});
 }
 
