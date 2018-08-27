@@ -24,6 +24,7 @@ app.use(passport.session());
 
 // MODELS
 require('./app/Models/User');
+require('./app/Models/Survey');
 
 // ROUTES
 app.use(require("./app/Routes/auth"));
