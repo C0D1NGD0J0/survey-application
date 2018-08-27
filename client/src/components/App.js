@@ -1,8 +1,10 @@
 import React, {Component} from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./layouts/Navigation/Navbar";
 import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home";
+import SurveysList from "./Surveys/surveysList";
+import CreateSurvey from "./Surveys/createSurvey";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -17,7 +19,9 @@ class App extends Component{
 				<div>
 					<Navbar />
 					<Route exact path="/" component={Home} />
-					<Route exact path="/dashboard" component={Dashboard} />
+					<Route exact path="/surveys" component={SurveysList} />
+					<Route path="/surveys/new" component={CreateSurvey} />
+					<Route path="/dashboard" component={Dashboard} />
 				</div>
 			</Router>
 		);
