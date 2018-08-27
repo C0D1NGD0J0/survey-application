@@ -11,8 +11,8 @@
     "stat": "node server",
     "server": "nodemon server",
     "client": "npm run start --prefix client",
-    "dbserver": "mongod",
-    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run dbserver\""
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"mongod\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
   },
   "author": "c0d1ngd0j0",
   "license": "ISC",

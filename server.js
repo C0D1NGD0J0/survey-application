@@ -5,6 +5,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const PORT = (process.env.PORT || 5000);
 const bodyParser = require("body-parser");
+const isProductionEnv = (process.env.NODE_ENV === "production");
 
 // DATABASE
 require("./app/Database");
@@ -27,6 +28,16 @@ require('./app/Models/User');
 // ROUTES
 app.use(require("./app/Routes/auth"));
 app.use(require("./app/Routes/billing"));
+
+if(isProductionEnv){
+	//express will server up production assets files
+	app.use(express.static("client/build"));
+	//express will serve up index.html file if it doesn't recognize the route
+	const path = require("path");
+	app.get("*", (req, res) =>{
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
+}
 
 // SERVER INIT
 app.listen(PORT, (err) =>{
