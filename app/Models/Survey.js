@@ -1,7 +1,7 @@
 "use strict";
 const mongoose = require("mongoose");
-const Recipient = require("./Recipient");
 const { Schema } = mongoose;
+const Recipient = require("./Recipient");
 
 const SurveySchema = new Schema({
 	title: String,
