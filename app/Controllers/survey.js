@@ -9,7 +9,7 @@ const surveyCntrl = {
 			subject,
 			body,
 			recipients: recipients.split(",").map(email => ({email: email.trim()})),
-			_user: req.user.id;
+			_user: req.user.id
 		});
 	}
 }
