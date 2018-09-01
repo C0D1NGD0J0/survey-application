@@ -10,8 +10,8 @@ module.exports = (survey) =>{
 
 							<p>${survey.body}</p>
 							<div class="userResponse">
-								<a href="http://localhose:3000">Yes</a>
-								<a href="http://localhose:3000">No</a>
+								<a href=${process.env.REDIRECT_DOMAIN}>Yes</a>
+								<a href=${process.env.REDIRECT_DOMAIN}>No</a>
 							</div>
 						</div>
 					</div>
