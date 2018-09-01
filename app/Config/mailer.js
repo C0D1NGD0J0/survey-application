@@ -7,7 +7,7 @@ class Mailer extends helper.Mail{
 		super();
 		
 		this.sendgridAPI = sendgrid(SENDGRID_KEY);
-		this.from_email = new helper.Email("no-replay@snapsurvey.com");
+		this.from_email = new helper.Email("no-reply@snapsurvey.com");
 		this.subject = subject;
 		this.body = new helper.Content("text/html", content);
 		this.recipients = this.formatAddresses(recipients);
@@ -41,14 +41,19 @@ class Mailer extends helper.Mail{
 	}
 
 	async send(){
-		const request = this.sendgridAPI.emptyRequest({
-			method: "POST",
-			path: "/v3/mail/send",
-			body: this.toJSON()
-		});
+		try {
+			const request = this.sendgridAPI.emptyRequest({
+				method: "POST",
+				path: "/v3/mail/send",
+				body: this.toJSON()
+			});
 
-		const response = this.sendgridAPI.API(request);
-		return response;
+			const response = this.sendgridAPI.API(request);
+			console.log("RESPONSE: ", response);
+			return response;
+		} catch(err) {
+			console.log("Error: ", err.response.body.errors);
+		}
 	}
 }
 

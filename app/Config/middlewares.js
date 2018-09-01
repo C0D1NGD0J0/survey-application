@@ -11,7 +11,7 @@ module.exports = {
 		const _user = req.user;
 
 		if(_user.credits > 1){
-			next();
+			return next();
 		} 
 		
 		return res.status(403).send({error: "Currently out of credits!"});
