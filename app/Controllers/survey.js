@@ -1,4 +1,6 @@
 const Survey = require("../Models/Survey");
+const Mailer = require("../Config/mailer");
+const surveyTemplate = require("../Config/Mailer/survey_template");
 
 const surveyCntrl = {
 	create: (req, res, next) =>{
@@ -11,6 +13,9 @@ const surveyCntrl = {
 			recipients: recipients.split(",").map(email => ({email: email.trim()})),
 			_user: req.user.id
 		});
+
+		const mailer = new Mailer(_survey, surveyTemplate(_survey));
+		mailer.send();
 	}
 }
 
