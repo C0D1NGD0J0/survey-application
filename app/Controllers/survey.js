@@ -3,7 +3,7 @@ const Mailer = require("../Config/mailer");
 const surveyTemplate = require("../Config/Mailer/survey_template");
 
 const surveyCntrl = {
-	create: (req, res, next) =>{
+	create: async (req, res, next) =>{
 		const { title, subject, body, recipients, userResponses } = req.body;
 		
 		const _survey = new Survey({
@@ -15,9 +15,17 @@ const surveyCntrl = {
 		});
 
 		const mailer = new Mailer(_survey, surveyTemplate(_survey));
-		mailer.send();
+		try{
+			await mailer.send();
+			await _survey.save();
+			req.user.credits -= 2.50;
+			const user = await req.user.save();
+
+			res.send(user);
+		} catch(err){
+			res.status(422).send(err);
+		}
 	}
 }
-
 
 module.exports = surveyCntrl;
