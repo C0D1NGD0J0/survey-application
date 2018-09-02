@@ -49,7 +49,6 @@ class Mailer extends helper.Mail{
 			});
 
 			const response = await this.sendgridAPI.API(request);
-			console.log("RESPONSE: ", response);
 			return response;
 		} catch(err) {
 			console.log("Error: ", err.response.body.errors);

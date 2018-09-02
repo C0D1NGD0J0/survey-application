@@ -28,7 +28,7 @@ const surveyCntrl = {
 	},
 
 	completed: (req, res, next) =>{
-		res.send("Thanks for voting!")
+		res.send("Thanks for voting!");
 	}
 }
 
