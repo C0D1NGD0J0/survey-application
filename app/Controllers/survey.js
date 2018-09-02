@@ -25,6 +25,10 @@ const surveyCntrl = {
 		} catch(err){
 			res.status(422).send(err);
 		}
+	},
+
+	completed: (req, res, next) =>{
+		res.send("Thanks for voting!")
 	}
 }
 
