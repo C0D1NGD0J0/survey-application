@@ -44,7 +44,7 @@ class Dashboard extends Component{
 						<a href="#!">
 							<div className="card-list-item">
 								<i className="fas fa-eye fa-3x"></i>
-								<h2>View All Campaigns</h2>
+								<h2>View All Campaigns (15)</h2>
 							</div>
 						</a>
 					</div>

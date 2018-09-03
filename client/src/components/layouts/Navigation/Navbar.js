@@ -56,7 +56,7 @@ class Navbar extends Component {
 
 			    <div id="navbar" className="collapse navbar-collapse">
 			      <ul className="nav navbar-nav navbar-right">
-							<li><Link to="/">Home <i className="fas fa-home"></i></Link></li>
+							<li><Link to={this.props.auth ? "/dashboard" : "/"}>Home <i className="fas fa-home"></i></Link></li>
 							{
 								this.isAuthenticated() ? this.renderNavContent() 
 								: <li><a href="/auth/google">Login with Google <i className="fab fa-google-plus 2x"></i></a></li>
