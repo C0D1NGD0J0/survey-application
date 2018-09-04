@@ -23,7 +23,7 @@ class Dashboard extends Component{
 					</div>
 
 					<div className="col-md-4 mb-2">
-						<Link to="#!">
+						<Link to="/surveys/new">
 							<div className="card-list-item">
 								<i className="fas fa-plus fa-3x"></i>
 								<h2 className="text-center text-uppercase">Create Campaign</h2>

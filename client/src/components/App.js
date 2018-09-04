@@ -4,7 +4,7 @@ import Navbar from "./layouts/Navigation/Navbar";
 import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home";
 import SurveysList from "./Surveys/surveysList";
-import CreateSurvey from "./Surveys/createSurvey";
+import SurveyNew from "./Surveys/createSurvey";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -20,7 +20,7 @@ class App extends Component{
 					<Navbar />
 					<Route exact path="/" component={Home} />
 					<Route exact path="/surveys" component={SurveysList} />
-					<Route path="/surveys/new" component={CreateSurvey} />
+					<Route path="/surveys/new" component={SurveyNew} />
 					<Route path="/dashboard" component={Dashboard} />
 				</div>
 			</Router>
