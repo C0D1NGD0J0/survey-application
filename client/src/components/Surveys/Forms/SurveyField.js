@@ -1,11 +1,12 @@
 import React from 'react';
 
 const SurveyField = (props) => {
-	const { input } = props;
+	const { input, label, placeholder } = props;
 
   return (
   	<div className="form-group">
-  		<input className="form-control" placeholder="Enter Survey title" {...input} />
+  		<label>{label}</label>
+  		<input placeholder={placeholder} className="form-control" {...input} />
   	</div>
   );
 };
