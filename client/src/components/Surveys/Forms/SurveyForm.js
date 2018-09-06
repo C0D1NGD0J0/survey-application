@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { reduxForm, Field } from "redux-form";
 import SurveyField from "./SurveyField";
+import { emailValidation } from "../../../utils/validation";
 
 const FIELDS = [
 	{label: "Survey Title", name: "title", placeholder: "Enter Survey Title"},
@@ -13,7 +14,7 @@ class SurveyForm extends Component {
 	renderFields(){
 		return FIELDS.map((obj) =>(
 			<Field key={obj.name} type="text" name={obj.name} component={SurveyField} label={obj.label} placeholder={obj.placeholder} />
-		))
+		));
 	}
 
 	render(){
@@ -33,9 +34,11 @@ function validate(values){
 	const errors = {};
 	const {title, body, recipients, subject} = values;
 	
+	errors.emails = emailValidation(values.emails || "");
+
 	FIELDS.forEach(({name}) =>{
 		if(!values[name]){
-			errors[name] = `You must provide a Survey ${name}`;
+			errors[name] = `You must provide Survey ${name}`;
 		};
 	});
 
