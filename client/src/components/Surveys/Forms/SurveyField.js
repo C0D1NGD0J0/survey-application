@@ -7,7 +7,7 @@ const SurveyField = (props) => {
   return (
   	<div className="form-group">
   		<label>{label}</label>
-  		<input placeholder={placeholder} className="form-control" {...input} />
+  		<input placeholder={placeholder} className="form-control" {...input} autoComplete="off"/>
 			<span className="text-danger text-uppercase"><b>{ touched && error }</b></span>
   	</div>
   );

@@ -9,8 +9,7 @@ class SurveyNew extends Component {
 		if(this.state.showFormReview){
 			return (
 				<React.Fragment>
-					<h3 className="page-header">Review Survey</h3>
-					<SurveyFormReview />
+					<SurveyFormReview onCancel={() => this.setState({showFormReview: false})} />
 				</React.Fragment>
 			)
 		}
