@@ -21,13 +21,28 @@ class SurveyForm extends Component {
 			<div>
 				<form onSubmit={this.props.handleSubmit(values => console.log(values))}>
 					{this.renderFields()}
-					<button type="submit" className="btn btn-primary btn-block">Submit</button>
+					<button type="submit" className="btn btn-success btn-md pull-right">NEXT <i className="fas fa-check"></i></button>
+					<button type="submit" className="btn btn-danger btn-md pull-left">CANCEL <i className="fas fa-ban"></i></button>
 				</form>
 			</div>
 		)
 	}
 }
 
+function validate(values){
+	const errors = {};
+	const {title, body, recipients, subject} = values;
+	
+	FIELDS.forEach(({name}) =>{
+		if(!values[name]){
+			errors[name] = `You must provide a Survey ${name}`;
+		};
+	});
+
+	return errors;
+};
+
 export default reduxForm({
+	validate,
 	form: "surveyForm"
 })(SurveyForm);
