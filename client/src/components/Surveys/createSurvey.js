@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { reduxForm } from "redux-form";
 import SurveyForm from "./Forms/SurveyForm";
 import SurveyFormReview from "./Forms/SurveyReview";
 
@@ -39,4 +40,6 @@ class SurveyNew extends Component {
 	}
 }
 
-export default SurveyNew;
+export default reduxForm({
+	form: "SurveyForm"
+})(SurveyNew);

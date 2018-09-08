@@ -18,7 +18,7 @@ class SurveyForm extends Component {
 					{this.renderFields()}
 
 					<button type="submit" className="btn btn-success btn-md pull-right">NEXT <i className="fas fa-long-arrow-alt-right"></i></button>
-					<button type="submit" className="btn btn-danger btn-md pull-left">CANCEL <i className="fas fa-ban"></i></button>
+					<a href="/dashboard" className="btn btn-danger btn-md pull-left">CANCEL <i className="fas fa-ban"></i></a>
 				</form>
 			</div>
 		)
@@ -28,7 +28,7 @@ class SurveyForm extends Component {
 function validate(values){
 	const errors = {};	
 	
-	errors.emails = emailValidation(values.emails || "");
+	errors.recipients = emailValidation(values.recipients || "");
 
 	formFields.forEach(({name}) =>{
 		if(!values[name]){
