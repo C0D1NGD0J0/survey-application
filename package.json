@@ -8,7 +8,7 @@
     "npm": "6.4.0"
   },
   "scripts": {
-    "stat": "node server",
+    "start": "node server",
     "server": "nodemon server",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"mongod\"",
