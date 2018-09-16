@@ -1,3 +1,6 @@
+const _ = require("lodash");
+const Path = require("path-parser").default;
+const { URL } = require("url");
 const Survey = require("../Models/Survey");
 const Mailer = require("../Config/mailer");
 const surveyTemplate = require("../Config/Mailer/survey_template");
@@ -32,7 +35,18 @@ const surveyCntrl = {
 	},
 
 	webhooks: (req, res, next) =>{
-		console.log(req.body);
+		const events = _.map(req.body, ({email, url}) =>{
+			const pathname = new URL(url).pathname;
+			const p = new Path("/api/surveys/:surveyId/:choice");
+			const match = p.test(pathname); //returns an object or null
+			if(match){
+				return {email, surveyId: match.surveyId, choice: match.choice}
+			}
+		});
+		
+		const compactEvents = _.compact(events); //removes undefined from array.
+		const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId"); //removes duplicate based on criteria provided
+
 		res.send({});
 	}
 }
