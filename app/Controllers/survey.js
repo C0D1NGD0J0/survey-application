@@ -29,6 +29,11 @@ const surveyCntrl = {
 
 	completed: (req, res, next) =>{
 		res.send("Thanks for voting!");
+	},
+
+	webhooks: (req, res, next) =>{
+		console.log(req.body);
+		res.send({});
 	}
 }
 

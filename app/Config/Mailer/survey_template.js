@@ -10,8 +10,8 @@ module.exports = (survey) =>{
 
 							<p>${survey.body}</p>
 							<div class="userResponse">
-								<a href=${process.env.REDIRECT_DOMAIN}/api/surveys/success>Yes</a>
-								<a href=${process.env.REDIRECT_DOMAIN}/api/surveys/success>No</a>
+								<a href=${process.env.REDIRECT_DOMAIN}/api/surveys/${survey.id}/yes>Yes</a>
+								<a href=${process.env.REDIRECT_DOMAIN}/api/surveys/${survey.id}/no>No</a>
 							</div>
 						</div>
 					</div>
