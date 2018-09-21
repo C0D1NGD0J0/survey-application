@@ -7,12 +7,11 @@ import * as actions from "../../../actions";
 const SurveyFormReview = ({onCancel, formValues, submitSurvey, history}) => {
 	const reviewFields = formFields.map(({name, label}) =>{
 		return(
-			<React.Fragment>
+			
 				<li key={name}>
 					<label>{label}</label>
 					<p style={{"paddingLeft": "15px"}}>{formValues[name]}</p>
 				</li>
-			</React.Fragment>
 		)
 	});
 

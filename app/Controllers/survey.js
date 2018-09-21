@@ -35,10 +35,9 @@ const surveyCntrl = {
 	},
 
 	webhooks: (req, res, next) =>{
+		const p = new Path("/api/surveys/:surveyId/:choice");
 		const events = _.map(req.body, ({email, url}) =>{
-			const pathname = new URL(url).pathname;
-			const p = new Path("/api/surveys/:surveyId/:choice");
-			const match = p.test(pathname); //returns an object or null
+			const match = p.test(new URL(url).pathname); //returns an object or null
 			if(match){
 				return {email, surveyId: match.surveyId, choice: match.choice}
 			}
@@ -46,7 +45,20 @@ const surveyCntrl = {
 		
 		const compactEvents = _.compact(events); //removes undefined from array.
 		const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId"); //removes duplicate based on criteria provided
-
+		
+		uniqueEvents.forEach(({surveyId, email, choice}) =>{
+			Survey.updateOne({
+				_id: surveyId,
+				recipients: {
+					$elemMatch: {email: email, responded: false}
+				}
+			}, {
+				$inc: {[choice]: 1},
+				$set: { 'recipients.$.responded': true},
+				lastResponded: new Date()
+			}).exec();
+		});
+		
 		res.send({});
 	}
 }
